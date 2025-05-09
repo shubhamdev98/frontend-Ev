@@ -1,12 +1,10 @@
 import React from 'react';
-import { Mail, MapPin, Phone, Send, Facebook, Twitter, Instagram, Linkedin, ArrowRight } from 'lucide-react';
 
 const BaseFooter = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-gradient-to-b from-primary to-primary-dark text-background-light">
-      {/* Main Footer */}
+    <footer className="bg-gradient-to-b from-primary to-primary-dark text-background-light">  
      
       {/* Divider */}
       <div className="border-t border-background-light/10">

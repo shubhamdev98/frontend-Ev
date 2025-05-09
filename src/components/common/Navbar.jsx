@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Search, Calendar, User, Ticket, ChevronDown, Instagram, Facebook, Mail } from 'lucide-react';
-import SubNavbar from './SubNavbar';
-import Logo from '../assets/Logo.png'
+import SubNavbar from '../Home/SubNavbar';
+import Logo from '../../assets/Logo.png'
 import { NavLink } from 'react-router';
 
 const navigationItems = [

@@ -1,11 +1,11 @@
-import HeroSection from "../components/Hero";
-import Navbar from "../components/Navbar";
-import TrophiesSection from "../components/TrophiesSection";
-import Gallery from "../components/Gallery";
-import PartnersSection from "../components/PartnersSection";
-import Footer from "../components/Footer";
-import FAQ from "../components/FAQ";
-import Feedback from "../components/Feedback";
+import HeroSection from "../components/Home/Hero";
+import Navbar from "../components/common/Navbar";
+import TrophiesSection from "../components/Home/TrophiesSection";
+import Gallery from "../components/Home/Gallery";
+import PartnersSection from "../components/Home/PartnersSection";
+import Footer from "../components/Home/Footer";
+import FAQ from "../components/Home/FAQ";
+import Feedback from "../components/Home/Feedback";
 
 
 const Home = () => {
