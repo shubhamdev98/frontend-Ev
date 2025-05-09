@@ -107,20 +107,16 @@ const SignUp = () => {
     <div className="min-h-screen flex">
       {/* Left side - Sign Up Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center bg-gradient-to-b from-primary-dark to-primary p-8">
-        <div className="w-full max-w-md space-y-8 bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-background-light/20 animate-fadeIn">
-          <div className="flex flex-col items-center space-y-4">
+        <div className="w-full max-w-md space-y-8 backdrop-blur-md p-8 rounded-2xl border border-background-light/10 animate-fadeIn">
+          <div className="flex flex-col items-center space-y-6">
            <NavLink to="/" className="transition-transform hover:scale-105">
-              <img className="w-12" src={Logo} alt="Logo" />
+              <img className="w-10" src={Logo} alt="Logo" />
             </NavLink>
 
-            <h2 className="text-lg font-bold text-background-light text-center">
-              Crystal Event Management System
-            </h2>
+          
 
             <div className="space-y-2">
-              <h3 className="text-lg font-semibold text-background-light text-center">
-                Create an Account
-              </h3>
+            
               <p className="text-sm text-background-light/70 text-center">
                 Join EventCraft and start planning your perfect event
               </p>
