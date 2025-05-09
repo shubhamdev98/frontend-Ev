@@ -72,7 +72,7 @@ const EventsPage = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto px-4 py-12 max-w-7xl">
+      <div className="container mx-auto px-4 py-45 max-w-7xl">
         <EventsHeader />
         <EventsFilter onFilterChange={handleFilterChange} />
 
@@ -103,7 +103,7 @@ const EventsPage = () => {
         {loading ? (
           <Loading text="Loading exciting events..." />
         ) : filteredEvents.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 mb-12">
             {filteredEvents.map(event => (
               <EventCard key={event.id} event={event} />
             ))}

@@ -8,7 +8,7 @@ export const eventsData = [
     time: "4:00 PM - 10:00 PM",
     location: "Rosewood Gardens",
     capacity: 120,
-    price: 4500,
+    price: 45,
     attendees: 0,
     includes: ["Full coordination", "Venue decoration", "Catering", "Photography", "Music", "Officiant"],
     tags: ["Wedding", "Summer", "Outdoor", "Elegant"],

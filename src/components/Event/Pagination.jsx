@@ -2,52 +2,60 @@ import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => (
-  <div className="flex justify-center mt-8">
-    <nav className="inline-flex rounded-md shadow">
+  <div className="flex justify-center mt-10">
+    <nav className="inline-flex rounded-xl shadow-md bg-white border border-gray-200 overflow-hidden">
+      
+      {/* Previous button */}
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className={`inline-flex items-center px-4 py-2 rounded-l-md border ${
+        className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors border-r ${
           currentPage === 1
             ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
             : 'bg-white text-gray-700 hover:bg-gray-50'
-        } text-sm font-medium`}
+        }`}
       >
-        <ChevronLeft size={18} className="mr-1" />
-        Previous
+        <ChevronLeft size={18} />
+        <span>Previous</span>
       </button>
 
+      {/* Page numbers (hidden on small screens) */}
       <div className="hidden sm:flex">
-        {[...Array(totalPages).keys()].map((page) => (
-          <button
-            key={page + 1}
-            onClick={() => onPageChange(page + 1)}
-            className={`inline-flex items-center px-4 py-2 border-t border-b ${
-              currentPage === page + 1
-                ? 'bg-indigo-50 text-indigo-600 border-indigo-200 z-10'
-                : 'bg-white text-gray-700 hover:bg-gray-50'
-            } text-sm font-medium`}
-          >
-            {page + 1}
-          </button>
-        ))}
+        {[...Array(totalPages).keys()].map((page) => {
+          const pageNum = page + 1;
+          return (
+            <button
+              key={pageNum}
+              onClick={() => onPageChange(pageNum)}
+              className={`px-4 py-2 text-sm font-medium transition-colors border-r ${
+                currentPage === pageNum
+                  ? 'bg-indigo-100 text-indigo-700 font-semibold'
+                  : 'bg-white text-gray-700 hover:bg-gray-50'
+              }`}
+            >
+              {pageNum}
+            </button>
+          );
+        })}
       </div>
 
-      <div className="sm:hidden inline-flex items-center px-4 py-2 border-t border-b bg-white text-gray-700 text-sm font-medium">
+      {/* Mobile view current page display */}
+      <div className="sm:hidden flex items-center px-4 py-2 text-sm text-gray-600 border-r">
         Page {currentPage} of {totalPages}
       </div>
 
+      {/* Next button */}
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className={`inline-flex items-center px-4 py-2 rounded-r-md border ${
+        className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${
           currentPage === totalPages
             ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
             : 'bg-white text-gray-700 hover:bg-gray-50'
-        } text-sm font-medium`}
+        }`}
       >
-        Next
-        <ChevronRight size={18} className="ml-1" />
+        <span>Next</span>
+        <ChevronRight size={18} />
       </button>
     </nav>
   </div>
