@@ -1,10 +1,9 @@
-import  Home  from  './page/Home'
-import { Outlet } from 'react-router';
+import RouterConfig from './config/RouterConfig';
 function App() {
   return (
-  <>
-    <Home/>
-  </>
+    <>
+      <RouterConfig />
+    </>
   );
 }
 
