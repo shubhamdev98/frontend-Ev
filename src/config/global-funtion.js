@@ -25,3 +25,17 @@ export const stringDecryptData = (cipherText) => {
     return null;
   }
 };
+
+export const assignFormError = (form,errors)=>{
+console.log("hello");
+
+  if (Array.isArray(errors)) {
+      const formattedErrors = {};
+      errors.forEach((err) => {
+        const key = Object.keys(err)[0];
+        const message = err[key];
+        formattedErrors[key] = message;
+      });
+      form.setErrors(formattedErrors);
+    }
+}

@@ -4,15 +4,25 @@ import { Mail, Lock, AlertCircle, Eye, EyeOff, User, Building, ArrowRight } from
 import Logo from '../../../../../../assets/Logo.png'
 import { useFormik } from 'formik';
 import { registerValidation } from '../ruls';
+import { useAppDispatch } from '../../../../../../store/hooks';
+import { registerApi } from '../../../utils/slice';
+import { assignFormError } from '../../../../../../config/global-funtion';
 
 const FormComponent = () => {
-
+    const dispatch = useAppDispatch()
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-    const handleSubmit = (data) => {
+    const handleSubmit = async (data) => {
         console.log("data", data);
+        await dispatch(registerApi(data)).then((res) => {
+            console.log("res", res);
 
+        }).catch((error) => {
+            console.log("error 20", error.errors);
+            assignFormError(formik,error.errors)
+
+        })
     }
     const formik = useFormik({
         initialValues: {
@@ -27,6 +37,7 @@ const FormComponent = () => {
         validationSchema: registerValidation,
         onSubmit: handleSubmit,
     });
+    
     return (
         <div>
             <div className="min-h-screen flex">

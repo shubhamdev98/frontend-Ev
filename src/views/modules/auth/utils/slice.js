@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { stringDecryptData, stringEncrypt } from "../../../../config/global-funtion";
+import { api } from "../../../../store/api";
+import { API_URL } from "./apiUrl";
 
 const initialState = {
   isLoading: true,
@@ -37,6 +39,17 @@ export const loginApi = (payload) => async (dispatch) => {
 
   } catch (error) {
     console.log("error", error);
+  }
+};
+
+export const registerApi = (payload) => async (dispatch) => {
+  try {
+    const data = await api.post(API_URL.REGISTER,payload);
+    console.log("data",data);
+    
+  } catch (error) {
+    // console.log("error 51", error?.response?.data);
+    return Promise.reject(error?.response?.data)
   }
 };
 
