@@ -1,0 +1,1 @@
+export const CryptoJS_SecretKey = import.meta.env.VITE_SECRET_KEY_ENCRIPT

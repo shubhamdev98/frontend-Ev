@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Mail, ArrowRight, ArrowLeft, AlertCircle, RefreshCw } from 'lucide-react';
-import { useNavigate, NavLink, useLocation } from 'react-router';
+import { useNavigate, useLocation, Link } from 'react-router';
 import Logo from '../assets/Logo.png';
 
 const ForgotPassword = () => {
@@ -60,9 +60,9 @@ const ForgotPassword = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-primary-dark to-primary py-10 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8 bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-background-light/20 animate-fadeIn">
         <div className="flex flex-col items-center space-y-4">
-          <NavLink to="/" className="transition-transform hover:scale-105">
+          <Link to="/" className="transition-transform hover:scale-105">
             <img className="w-12" src={Logo} alt="Logo" />
-          </NavLink>
+          </Link>
 
           <h2 className="text-lg font-bold text-background-light text-center">
             Crystal Event Management System
@@ -143,25 +143,25 @@ const ForgotPassword = () => {
             </button>
 
             <div className="text-center pt-2">
-              <NavLink
+              <Link
                 to="/signin"
                 className="inline-flex items-center justify-center text-sm font-medium text-secondary hover:text-secondary-dark transition group"
               >
                 <ArrowLeft className="h-4 w-4 mr-2 transition-transform duration-300 group-hover:-translate-x-1" />
                 Back to Sign In
-              </NavLink>
+              </Link>
             </div>
 
             {showResend && !isResend && (
               <div className="text-center pt-2">
-                <NavLink
+                <Link
                   to="/forgot-password"
                   state={{ resend: true }}
                   className="inline-flex items-center justify-center text-sm font-medium text-secondary hover:text-secondary-dark transition group"
                 >
                   <RefreshCw className="h-4 w-4 mr-2 transition-transform duration-300 group-hover:rotate-180" />
                   Resend Verification Code
-                </NavLink>
+                </Link>
               </div>
             )}
           </div>
