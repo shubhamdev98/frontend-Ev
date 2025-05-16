@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Mail, Lock, AlertCircle, Eye, EyeOff, ArrowRight } from 'lucide-react';
-import { NavLink } from 'react-router';
+import { NavLink, Link } from 'react-router';
 import Logo from '../assets/Logo.png';
+import GoogleButton from '../components/auth/GoogleButton.jsx';
+import Divider from '../components/auth/Divider.jsx';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
@@ -73,6 +75,34 @@ const SignIn = () => {
     }
   };
 
+  const handleGoogleSuccess = async (tokenResponse) => {
+    try {
+      setIsSubmitting(true);
+      console.log('Google login successful:', tokenResponse);
+      
+      // In a real implementation, you would send this token to your backend
+      // to verify and create a session or JWT for your application
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Handle successful login (redirect, etc.)
+    } catch (error) {
+      setErrors({
+        general: 'Failed to sign in with Google. Please try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleGoogleError = (error) => {
+    console.error('Google login error:', error);
+    setErrors({
+      general: 'Google sign in failed. Please try again or use email/password.'
+    });
+  };
+
   return (
     <div className="min-h-screen flex">
       {/* Left side - Image */}
@@ -99,7 +129,7 @@ const SignIn = () => {
       <div className="w-full lg:w-1/2 flex items-center justify-center bg-gradient-to-b from-primary-dark to-primary p-8">
         <div className="w-full max-w-md space-y-8 bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-background-light/20 animate-fadeIn">
           <div className="flex flex-col items-center space-y-4">
-            <NavLink to="/" className="transition-transform hover:scale-105">
+              <NavLink to="/" className="transition-transform hover:scale-105">
               <img className="w-12" src={Logo} alt="Logo" />
             </NavLink>
 
@@ -241,6 +271,16 @@ const SignIn = () => {
               </button>
             </div>
           </form>
+
+          <Divider text="or continue with" />
+
+          <div>
+            <GoogleButton 
+              onSuccess={handleGoogleSuccess} 
+              onError={handleGoogleError}
+              disabled={isSubmitting}
+            />
+          </div>
 
           <div className="text-center">
             <p className="text-sm text-background-light/70">

@@ -1,5 +1,5 @@
 import  Home  from  './page/Home'
-import { Outlet } from 'react-router';
+
 function App() {
   return (
   <>

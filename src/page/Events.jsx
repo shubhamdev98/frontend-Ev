@@ -77,7 +77,7 @@ const EventsPage = () => {
         <EventsFilter onFilterChange={handleFilterChange} />
 
         {/* Event Count */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="justify-between mb-8">
           <h2 className="text-xl font-semibold text-gray-800">
             {loading ? (
               <div className="flex items-center">
