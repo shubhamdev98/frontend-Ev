@@ -3,21 +3,21 @@ import { minPassword, validations } from "../../../../../config/validation";
 
 const label = {
   firstName: "First name",
-  lastName: "Last name",
+  last_name: "Last name",
   email: "Email",
   password: "Password",
   confirmPassword: "Confirm password",
   companyName: "Company name",
 };
 export const registerValidation = Yup.object().shape({
-  firstName: Yup.string()
+  first_name: Yup.string()
     .trim()
     .required(validations.required.text(label.firstName)),
 
-  lastName: Yup.string().when("role", {
+  last_name: Yup.string().when("role", {
     is: "user",
     then: () =>
-      Yup.string().trim().required(validations.required.text(label.lastName)),
+      Yup.string().trim().required(validations.required.text(label.last_name)),
     otherwise: () => Yup.string().trim().notRequired(),
   }),
 

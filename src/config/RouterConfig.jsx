@@ -1,15 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import AuthLayout from "../views/layouts/AuthLayout";
+import Login from "../views/modules/auth/login";
+import Registration from "../views/modules/auth/register"
+import ForgotPassword from "../views/modules/auth/forgotPassword";
+import MainLayout from "../views/layouts/MainLayout";
 import Home from "../page/Home";
 import PageNotFound from "../views/errors/PageNotFound";
-import MainLayout from "../views/layouts/MainLayout";
-import SignIn from "../page/SignIn";
-import SignUp from "../page/SignUp";
-import Login from "../views/modules/auth/login";
-import Registration from "../views/modules/auth/register";
+import OTPVerification from "../views/modules/auth/OTPVerification";
+import ResetPassword from "../views/modules/auth/resetPassword";
 
 export default function RouterConfig() {
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }
 
 export const router = createBrowserRouter([
@@ -18,17 +19,17 @@ export const router = createBrowserRouter([
     children: [
       { path: "/signin", element: <Login /> },
       { path: "/signup", element: <Registration /> },
-      { path: "/forgot-password", element: <Home /> },
+      { path: "/forgot-password", element: <ForgotPassword /> },
+      { path: "/verify-otp", element: <OTPVerification /> },
+      { path: "/reset-password", element: <ResetPassword /> },
     ],
   },
   {
     element: <MainLayout />,
-    children: [
-      { path: "/", element: <Home /> }
-    ],
+    children: [{ path: "/", element: <Home /> }],
   },
   {
     path: "*",
-    element: <PageNotFound />
-  }
+    element: <PageNotFound />,
+  },
 ]);

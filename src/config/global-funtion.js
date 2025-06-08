@@ -1,9 +1,10 @@
 import CryptoJS from "crypto-js";
 import { CryptoJS_SecretKey } from "./Constant";
+import { store } from "../store/store";
 
 const secretKey = CryptoJS_SecretKey;
 
- // Encryption function
+// Encryption function
 export const stringEncrypt = (data) => {
   try {
     const cipherText = CryptoJS.AES.encrypt(data, secretKey).toString();
@@ -26,16 +27,23 @@ export const stringDecryptData = (cipherText) => {
   }
 };
 
-export const assignFormError = (form,errors)=>{
-console.log("hello");
+export const assignFormError = (form, errors) => {
+  console.log("hello");
 
   if (Array.isArray(errors)) {
-      const formattedErrors = {};
-      errors.forEach((err) => {
-        const key = Object.keys(err)[0];
-        const message = err[key];
-        formattedErrors[key] = message;
-      });
-      form.setErrors(formattedErrors);
-    }
-}
+    const formattedErrors = {};
+    errors.forEach((err) => {
+      const key = Object.keys(err)[0];
+      const message = err[key];
+      formattedErrors[key] = message;
+    });
+    form.setErrors(formattedErrors);
+  }
+};
+
+export const handleStorageEvents = (event) => {
+  // console.log("event", event);
+  if (event.key === "token" && event.newValue === null) {
+    store.dispatch(resetAuthStore());
+  }
+};

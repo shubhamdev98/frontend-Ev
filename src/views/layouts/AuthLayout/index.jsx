@@ -1,12 +1,24 @@
-import React from 'react'
-import { Outlet } from 'react-router'
+import React, { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router";
+import { useAppSelector } from "../../../store/hooks";
 
 const AuthLayout = () => {
-    return (
-        <>
-            <Outlet />
-        </>
-    )
-}
+  const navigate = useNavigate();
+  const token = useAppSelector((state) => state.auth.token);
 
-export default AuthLayout
+  useEffect(() => {
+    const timeId = setTimeout(() => {
+      if (token) {
+        navigate("/");
+      }
+    }, 10);
+    return () => clearTimeout(timeId);
+  }, [token]);
+  return (
+    <>
+      <Outlet />
+    </>
+  );
+};
+
+export default AuthLayout;

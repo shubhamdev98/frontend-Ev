@@ -19,11 +19,11 @@ const VerifyOTP = () => {
   const inputRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
   
   // Redirect to forgot password if no email is provided
-  useEffect(() => {
-    if (!email) {
-      navigate('/forgot-password');
-    }
-  }, [email, navigate]);
+  // useEffect(() => {
+  //   if (!email) {
+  //     navigate('/forgot-password');
+  //   }
+  // }, [email, navigate]);
   
   // OTP expiration timer
   useEffect(() => {
